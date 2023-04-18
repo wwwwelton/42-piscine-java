@@ -1,7 +1,9 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Program {
-  static String convertStrToNote(String str) {
+  static String formatNote(String str) {
     StringBuilder sb = new StringBuilder();
     String arr[] = str.split(" ");
     int sum = 0;
@@ -18,9 +20,8 @@ public class Program {
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    String[] weeks = new String[18];
+    Map<Integer, String> weeks = new HashMap<>();
     int index = 0;
-    int size = 0;
     while (true) {
       String week = scanner.nextLine();
       if (week.equals("42"))
@@ -30,17 +31,16 @@ public class Program {
         System.err.println("IllegalArgument");
         System.exit(-1);
       }
-      index = Integer.parseInt(tmp[1]) - 1;
-      if (index + 1 == 18) {
+      index = Integer.parseInt(tmp[1]);
+      if (index == 18) {
         System.err.println("Maximum number of weeks for the analysis is 18");
         break;
       }
-      String notes = convertStrToNote(scanner.nextLine());
-      weeks[index] = notes;
-      size++;
+      String notes = formatNote(scanner.nextLine());
+      weeks.put(index, notes);
     }
-    for (int i = 0; i < size; i++) {
-      System.out.println("Week " + (i + 1) + " " + weeks[i]);
+    for (Map.Entry<Integer, String> entry : weeks.entrySet()) {
+      System.out.println("Week " + entry.getKey() + " " + entry.getValue());
     }
     System.exit(0);
   }
