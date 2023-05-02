@@ -1,0 +1,17 @@
+implement a functionality for storing users while the program runs
+UsersList interface
+- Add a user
+- Retrieve a user by ID
+- Retrieve a user by index
+- Retrieve the number of users
+
+implement UsersArrayList class that implements UsersList interface
+- use an array to store user data
+- default array size is 10
+- if the array is full, its size is increased by half
+- user-adding method puts an object of User type in the first empty cell of the array
+- attempt to retrieve a user with a non-existent ID, an unchecked UserNotFoundException
+must be thrown
+
+An example of use of such classes shall be contained in Program file (creation, initialization,
+printing object content on a console)
